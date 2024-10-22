@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACSM Equation Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="page-title">Metabolic Calculations</h1>
+    <div class="container">
+        <!-- Column for ACSM Equations -->
+        <div class="column">
+            <h1>Equations</h1>
+
+            <!-- Walking Equation -->
+            <div class="equation-box">
+                <h2>Walking Equation</h2>
+                <p class="equation">VO₂ (mL/kg/min) = [Speed (m/min) × 0.1] + [Speed (m/min) × Grade (decimal) × 1.8] + 3.5</p>
+                <form id="walking-form">
+                    <label for="walking-speed">Speed (m/min):</label>
+                    <input type="number" id="walking-speed" name="walking-speed">
+
+                    <label for="walking-grade">Grade (decimal):</label>
+                    <input type="number" step="0.01" id="walking-grade" name="walking-grade">
+
+                    <label for="walking-vo2">VO₂ (mL/kg/min):</label>
+                    <input type="number" step="0.01" id="walking-vo2" name="walking-vo2">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateWalkingVO2()">Calculate VO₂</button>
+                        <button type="button" onclick="calculateWalkingSpeed()">Calculate Speed</button>
+                        <button type="button" onclick="calculateWalkingGrade()">Calculate Grade</button>
+                        <button type="button" class="clear-button" onclick="clearWalkingForm()">Clear</button>
+                    </div>
+                    
+                    <p id="walking-result"></p>
+                    This equation is appropriate for fairly slow speed ranges—from 1.9 to approximately 4 miles per hour (mph). Speed is calculated in meters per minute (m/min). The numbers 0.1 and 1.8 are constants that refer to the following:
+
+<br>0.1 = oxygen cost per meter of moving each kilogram (kg) of body weight while walking (horizontally)
+
+<br>1.8 = oxygen cost per meter of moving total body mass against gravity (vertically)
+
+                </form>
+            </div>
+
+            <!-- Running Equation -->
+            <div class="equation-box">
+                <h2>Running Equation</h2>
+                <p class="equation">VO₂ (mL/kg/min) = [Speed (m/min) × 0.2] + [Speed (m/min) × Grade (decimal) × 0.9] + 3.5</p>
+                <form id="running-form">
+                    <label for="running-speed">Speed (m/min):</label>
+                    <input type="number" id="running-speed" name="running-speed">
+
+                    <label for="running-grade">Grade (decimal):</label>
+                    <input type="number" step="0.01" id="running-grade" name="running-grade">
+
+                    <label for="running-vo2">VO₂ (mL/kg/min):</label>
+                    <input type="number" step="0.01" id="running-vo2" name="running-vo2">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateRunningVO2()">Calculate VO₂</button>
+                        <button type="button" onclick="calculateRunningSpeed()">Calculate Speed</button>
+                        <button type="button" onclick="calculateRunningGrade()">Calculate Grade</button>
+                        <button type="button" class="clear-button" onclick="clearRunningForm()">Clear</button>
+                    </div>
+                    <p id="running-result"></p>
+
+                    This equation is appropriate for speeds greater than 5.0 mph (or 3.0 mph or greater if the subject is truly jogging). Speed is calculated in m/min.
+
+The constants refer to the following:
+
+<br>0.2 = oxygen cost per meter of moving each kg of body weight while running (horizontally)
+
+<br>0.9 = oxygen cost per meter of moving total body mass against gravity (vertically)
+
+                </form>
+            </div>
+
+            <!-- Leg Ergometer Equation -->
+            <div class="equation-box">
+                <h2>Leg Ergometer Equation</h2>
+                <p class="equation">VO₂ (mL/kg/min) = [1.8 × Work rate (kg·m/min) ÷ Body mass (kg)] + 7</p>
+                <form id="leg-form">
+                    <label for="leg-work-rate">Work rate (kg·m/min):</label>
+                    <input type="number" id="leg-work-rate" name="leg-work-rate">
+
+                    <label for="leg-body-mass">Body Mass (kg):</label>
+                    <input type="number" step="0.1" id="leg-body-mass" name="leg-body-mass">
+
+                    <label for="leg-vo2">VO₂ (mL/kg/min):</label>
+                    <input type="number" step="0.01" id="leg-vo2" name="leg-vo2">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateLegVO2()">Calculate VO₂</button>
+                        <button type="button" onclick="calculateLegWorkRate()">Calculate Work Rate</button>
+                        <button type="button" onclick="calculateLegBodyMass()">Calculate Body Mass</button>
+                        <button type="button" class="clear-button" onclick="clearLegForm()">Clear</button>
+                    </div>
+                    <p id="leg-result"></p>
+                    This equation is appropriate for power outputs of 300–1,200 kilogram meters per minute (kgm/min) and speeds of 50–60 revolutions per minute (rpm). Since the power output that needs to be plugged into the equation is in kgm/min, and many exercise bikes measure in watts, you may need to convert watts to kgm/min (1 watt = 6 kgm/min). The constants refer to the following:
+
+<br>1.8 = oxygen cost of producing 1 kgm/min of power output
+
+<br>7 = oxygen cost of unloaded cycling plus resting oxygen consumption
+
+                </form>
+            </div>
+
+            <!-- Arm Ergometer Equation -->
+            <div class="equation-box">
+                <h2>Arm Ergometer Equation</h2>
+                <p class="equation">VO₂ (mL/kg/min) = [3 × Work rate (kg·m/min) ÷ Body mass (kg)] + 3.5</p>
+                <form id="arm-form">
+                    <label for="arm-work-rate">Work rate (kg·m/min):</label>
+                    <input type="number" id="arm-work-rate" name="arm-work-rate">
+
+                    <label for="arm-body-mass">Body Mass (kg):</label>
+                    <input type="number" step="0.1" id="arm-body-mass" name="arm-body-mass">
+
+                    <label for="arm-vo2">VO₂ (mL/kg/min):</label>
+                    <input type="number" step="0.01" id="arm-vo2" name="arm-vo2">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateArmVO2()">Calculate VO₂</button>
+                        <button type="button" onclick="calculateArmWorkRate()">Calculate Work Rate</button>
+                        <button type="button" onclick="calculateArmBodyMass()">Calculate Body Mass</button>
+                        <button type="button" class="clear-button" onclick="clearArmForm()">Clear</button>
+                    </div>
+                    <p id="arm-result"></p>
+                    3 = oxygen cost of producing 1 kgm/min of power output
+                </form>
+            </div>
+
+            <!-- Stepping Equation -->
+            <div class="equation-box">
+                <h2>Stepping Equation</h2>
+                <p class="equation">VO₂ (mL/kg/min) = [f(steps/min) × 0.2] + [1.33 × 1.8 × Steps × Height (m)] + 3.5</p>
+                <form id="step-form">
+                    <label for="step-freq">Frequency (steps/min):</label>
+                    <input type="number" id="step-freq" name="step-freq">
+
+                    <label for="step-height">Step Height (m):</label>
+                    <input type="number" step="0.01" id="step-height" name="step-height">
+
+                    <label for="step-vo2">VO₂ (mL/kg/min):</label>
+                    <input type="number" step="0.01" id="step-vo2" name="step-vo2">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateStepVO2()">Calculate VO₂</button>
+                        <button type="button" onclick="calculateStepFreq()">Calculate Frequency</button>
+                        <button type="button" onclick="calculateStepHeight()">Calculate Step Height</button>
+                        <button type="button" class="clear-button" onclick="clearStepForm()">Clear</button>
+                    </div>
+                    <p id="step-result"></p>
+                    This equation is appropriate for stepping rates of 12–30 steps/min and for step heights ranging from 1.6 to 15.7 inches. Since the height that needs to be plugged into the equation is in meters, you must convert inches to meters (1 inch = 0.0254 meters). The constants refer to the following:
+
+<br>0.2 = oxygen cost of moving horizontally during stepping
+
+<br>1.8 = oxygen cost of moving vertically during stepping
+
+<br>1.33 = correction factor for positive and negative (up and down) component of stepping
+
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Column for HR, VO₂, and MET Calculations -->
+        <div class="column">
+            <h1>Conversions</h1>
+            <div class="conversion-box">
+                <form id="conversion-form">
+                    <label for="conversion-type">Choose a Conversion:</label>
+                    <select id="conversion-type" onchange="updatePlaceholder()">
+                        <option value="">Select a conversion</option>
+                        <option value="liters-to-milliliters">Liters to Milliliters</option>
+                        <option value="kilograms-to-pounds">Kilograms to Pounds</option>
+                        <option value="miles-to-meters">Miles per Hour to Meters/Min</option>
+                        <option value="miles-to-kilometers">Miles per Hour to Km/Hour</option>
+                        <option value="lbs-to-kcal">Pounds of Fat to kcal</option>
+                        <option value="met-to-mlkgmin">MET to ml/kg/min</option>
+                        <option value="watts-to-kgmin">Watts to kg.m/min</option>
+                        <option value="liters-o2-to-kcal">Liters O₂ to kcal</option>
+                        <option value="inches-to-meters">Inches to Meters</option>
+                    </select>
+        
+                    <label for="input-value" id="conversion-label">Input Value:</label>
+                    <input type="number" id="input-value" placeholder="Enter value" />
+        
+                    <button type="button" onclick="performConversion()">Convert</button>
+        
+                    <p id="conversion-result"></p>
+        
+                    <button type="button" class="clear-button" onclick="clearConversionForm()">Clear All</button>
+                </form>
+            </div>
+         
+
+
+            <h1>HR, VO₂, and MET Calculations</h1>
+
+            <!-- HRR Method -->
+            <div class="equation-box">
+                <h2>HRR Method</h2>
+                <p class="equation">Target HR = [(HRmax/peak − HRrest) × % intensity desired] + HRrest</p>
+                <form id="hrr-form">
+                    <label for="hrr-max">HR Max/Peak:</label>
+                    <input type="number" id="hrr-max" name="hrr-max">
+
+                    <label for="hrr-rest">HR Rest:</label>
+                    <input type="number" id="hrr-rest" name="hrr-rest">
+
+                    <label for="hrr-intensity">Intensity (%):</label>
+                    <input type="number" id="hrr-intensity" name="hrr-intensity">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateHRR()">Calculate Target HR</button>
+                        <button type="button" class="clear-button" onclick="clearHRRForm()">Clear</button>
+                    </div>
+                    <p id="hrr-result"></p>
+                </form>
+            </div>
+
+            <!-- VO₂R Method -->
+            <div class="equation-box">
+                <h2>VO₂R Method</h2>
+                <p class="equation">Target VO₂R = [(VO₂max/peak − VO₂rest) × % intensity desired] + VO₂rest</p>
+                <form id="vo2r-form">
+                    <label for="vo2r-max">VO₂ Max/Peak:</label>
+                    <input type="number" id="vo2r-max" name="vo2r-max">
+
+                    <label for="vo2r-rest">VO₂ Rest:</label>
+                    <input type="number" id="vo2r-rest" name="vo2r-rest">
+
+                    <label for="vo2r-intensity">Intensity (%):</label>
+                    <input type="number" id="vo2r-intensity" name="vo2r-intensity">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateVO2R()">Calculate Target VO₂R</button>
+                        <button type="button" class="clear-button" onclick="clearVO2RForm()">Clear</button>
+                    </div>
+                    <p id="vo2r-result"></p>
+                </form>
+            </div>
+
+            <!-- HR Method -->
+            <div class="equation-box">
+                <h2>HR Method</h2>
+                <p class="equation">Target HR = HRmax/peak × % intensity desired</p>
+                <form id="hr-form">
+                    <label for="hr-max">HR Max/Peak:</label>
+                    <input type="number" id="hr-max" name="hr-max">
+
+                    <label for="hr-intensity">Intensity (%):</label>
+                    <input type="number" id="hr-intensity" name="hr-intensity">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateHR()">Calculate Target HR</button>
+                        <button type="button" class="clear-button" onclick="clearHRForm()">Clear</button>
+                    </div>
+                    <p id="hr-result"></p>
+                </form>
+            </div>
+
+            <!-- VO₂ Method -->
+            <div class="equation-box">
+                <h2>VO₂ Method</h2>
+                <p class="equation">Target VO₂ = VO₂max/peak × % intensity desired</p>
+                <form id="vo2-form">
+                    <label for="vo2-max">VO₂ Max/Peak:</label>
+                    <input type="number" id="vo2-max" name="vo2-max">
+
+                    <label for="vo2-intensity">Intensity (%):</label>
+                    <input type="number" id="vo2-intensity" name="vo2-intensity">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateVO2()">Calculate Target VO₂</button>
+                        <button type="button" class="clear-button" onclick="clearVO2Form()">Clear</button>
+                    </div>
+                    <p id="vo2-result"></p>
+                </form>
+            </div>
+
+            <!-- MET Method -->
+            <div class="equation-box">
+                <h2>MET Method</h2>
+                <p class="equation">Target MET = [(VO₂max/peak) ÷ 3.5] × % intensity desired</p>
+                <form id="met-form">
+                    <label for="met-vo2-max">VO₂ Max/Peak:</label>
+                    <input type="number" id="met-vo2-max" name="met-vo2-max">
+
+                    <label for="met-intensity">Intensity (%):</label>
+                    <input type="number" id="met-intensity" name="met-intensity">
+
+                    <div class="buttons">
+                        <button type="button" onclick="calculateMET()">Calculate Target MET</button>
+                        <button type="button" class="clear-button" onclick="clearMETForm()">Clear</button>
+                    </div>
+                    <p id="met-result"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <footer>
+        <p>by Taner Erdogan @ 2024</p>
+        <p>Reference: ACSM's Metabolic Calculations Handbook and ACSM’s Guidelines for Exercise Testing and Prescription</p>
+
+    </footer>
+</body>
+</html>

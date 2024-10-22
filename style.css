@@ -1,0 +1,172 @@
+/* General body and layout styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 2fr; /* Two equal-width columns */
+    gap: 20px; /* Space between columns */
+    max-width: 1600px;
+    margin: auto;
+}
+
+.column {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 95%;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.equation-box {
+    border: 1px solid #ccc;   /* Light grey border */
+    border-radius: 8px;       /* Rounded corners */
+    padding: 30px;            /* Padding inside the border */
+    background-color: #f9f9f9; /* Light grey background */
+    margin-bottom: 20px;      /* Space below each equation */
+}
+
+.equation {
+    font-size: 0.9em;         /* Slightly smaller font for the equation */
+    color: #555;              /* Optional lighter text color */
+}
+
+form {
+    margin-top: 10px;         /* Space between equation and form */
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 12%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Add space between the buttons and the last input field */
+}
+
+
+/* General button styles */
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 1.1rem; /* Increase button text size */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Clear button specific styles */
+.clear-button {
+    background-color: #ff4c4c;
+    color: white;
+}
+
+.clear-button:hover {
+    background-color: #d11a1a;
+}
+
+/* Styling for results */
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Specific styling for calculation results */
+p[id$="-result"] {
+    background-color: #ff4c4c; /* Red background */
+    color: white;              /* White text */
+    font-weight: bold;         /* Bold text */
+    padding: 10px;
+    border-radius: 5px;
+}
+/* Footer Styling */
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 1rem;
+    margin: 20px auto; /* Centers the footer horizontally */
+    border-top: 1px solid #ccc;
+    border-radius: 8px; /* Rounded corners */
+    width: 100%; /* Adjust the width of the footer */
+    max-width: 1400px; /* Optional: set a max width */
+}
+
+
+
+footer p {
+    margin: 0;
+}
+
+footer p + p {
+    margin-top: 5px;  /* Adds space between the copyright text and the reference */
+    font-style: italic;  /* Italicize the reference text */
+    font-size: 0.95rem;  /* Slightly smaller font size for the reference */
+    color: #555;  /* Light grey color for the reference */
+}
+
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 30%; /* Adjust width to match input fields */
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+}
+
+select:hover {
+    border-color: #ff4c4c; /* Change border color on hover */
+}
+
+select:focus {
+    outline: none;
+    border-color: #0056b3; /* Change border color on focus */
+}
+
+/* Style for the label of the dropdown */
+/* Style for the conversion box to match other framed boxes */
+.conversion-box {
+    border: 1px solid #ccc;   /* Light grey border */
+    border-radius: 8px;       /* Rounded corners */
+    padding: 30px;            /* Padding inside the border */
+    background-color: #f9f9f9; /* Light grey background */
+    margin-bottom: 20px;      /* Space below the conversion box */
+    width: 92%;
+}
+/* Style for the page title */
+.page-title {
+    text-align: center;
+    font-size: 3.0rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
